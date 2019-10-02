@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container">
+	<br>
+<h2>Sent Rquests</h2>
+
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>sno</th>
+        <th>Roomate_name</th>
+        <th>Roomate_roll</th>
+      </tr>
+    </thead>
+    {% for  i in range(1,len) %}
+    <tbody>
+      <tr>
+        <td> {{ i }}</td>
+        <td>{{ prem[i-1] }}</td>
+        <td>{{ sauravs[i-1].roomate }}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+{% endblock content %}

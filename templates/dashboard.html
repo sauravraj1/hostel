@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div>
+
+
+
+            {% for ser in sers %}
+
+            <form method="POST" action="/request"><br>
+
+
+                <script>
+				function saurav()
+				{
+				var elem = document.getElementById("saurav");
+				elem.parentNode.removeChild(elem);
+				}
+	            </script>
+
+
+				<div class="form-group" id="saurav">
+                    <font  size=5 color="blue" >{{ ser.user}}</font><font size=3 color="black" > want to be your roomate</font>
+
+				<input type="submit" value=accept name="submit_button"> <input type="submit" value=decline name="submit_button" onclick="saurav()">
+				</div>
+
+			</form>
+            {% endfor %}
+
+
+</div>
+
+
+<div class="container">
+<br><a href="/sentrequest" class="btn btn-dark">Sent Rquests</a>
+</div>
+
+<div>
+            <form method="POST" action="/dashboard"><br>
+             <p><font size=5 color="blue" >Student Dashboard</font></p>
+			{{ select_form.hidden_tag() }}
+			<fieldset class="form-group">
+				<div class="form-group">
+					<p><font color="black">Enter your roomate {{ select_form.roomate_roll.label(class="form-control-label")}} number here!!!</font></p>
+					{% if select_form.roomate_roll.errors %}
+						{{ select_form.roomate_roll(class="form-control form-control-lg is-invalid")}}
+						<div class="invalid-feedback">
+							{% for error in select_form.roomate_roll.errors %}
+								<span>{{ error}}</span>
+							{% endfor %}
+						</div>
+
+						{% else %}
+							{{ select_form.roomate_roll(class="form-control form-control-lg")}}
+					{% endif %}
+				</div>
+			</fieldset>
+				<div class="form-group">
+				{{ select_form.submit(class="btn btn-outline-info")}}
+				</div>
+			</form>
+</div>
+{% endblock content %}
